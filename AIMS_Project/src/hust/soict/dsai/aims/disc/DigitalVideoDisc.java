@@ -1,18 +1,10 @@
 package hust.soict.dsai.aims.disc;
 
-public class DigitalVideoDisc {
-    private String title;
-    private String category;
-    private String director;
-    private int length;
-    private float cost;
-    // instance attribute
-    private int id;
+import hust.soict.dsai.aims.media.Media;
 
-    public int getId() {
-        return id;
-    }
-
+public class DigitalVideoDisc extends Disc implements Playable {
+//    private String director;
+//    private int length;
 //    public void setId(int id) {
 //        this.id = id;
 //    }
@@ -24,86 +16,53 @@ public class DigitalVideoDisc {
         return nbDigitalVideoDiscs;
     }
 
-//    public static void setNbDigitalVideoDiscs(int nbDigitalVideoDiscs) {
+    //    public static void setNbDigitalVideoDiscs(int nbDigitalVideoDiscs) {
 //        hust.soict.dsai.aims.disc.DigitalVideoDisc.nbDigitalVideoDiscs = nbDigitalVideoDiscs;
 //    }
     //
-    public String getTitle() {
-        return title;
+    public DigitalVideoDisc() {
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public float getCost() {
-        return cost;
-    }
-
-    public void setCost(float cost) {
-        this.cost = cost;
-    }
-
-    public DigitalVideoDisc(){
-    }
     public DigitalVideoDisc(String title) {
         ++nbDigitalVideoDiscs;
-        this.id = (int) (Math.random() * 10000);
-        this.title = title;
+        setId((int) (Math.random() * 10000));
+        setTitle(title);
     }
 
     public DigitalVideoDisc(String title, String category, float cost) {
         ++nbDigitalVideoDiscs;
-        this.id = (int) (Math.random() * 10000);
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
+        setId((int) (Math.random() * 10000));
+        setTitle(title);
+        setCategory(category);
+        setCost(cost);
     }
 
     public DigitalVideoDisc(String title, String category, String director, float cost) {
         ++nbDigitalVideoDiscs;
-        this.id = (int) (Math.random() * 10000);
-        this.title = title;
-        this.category = category;
-        this.director = director;
-        this.cost = cost;
+        setId((int) (Math.random() * 10000));
+        setTitle(title);
+        setCategory(category);
+        setDirector(director);
+        setCost(cost);
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
         ++nbDigitalVideoDiscs;
-        id = (int) (Math.random() * 10000);
-        this.title = title;
-        this.category = category;
-        this.director = director;
-        this.length = length;
-        this.cost = cost;
+        setId((int) (Math.random() * 10000));
+        setTitle(title);
+        setCategory(category);
+        setDirector(director);
+        setLength(length);
+        setCost(cost);
     }
 
-    public void toStringCl() {
-        System.out.println( "DVD - " + title + " - "+ category + " - "+ director  +" - "+ length +": " + cost +" $");
+//    public void toStringCl() {
+//        System.out.println("DVD - " + getTitle() + " - " + getCategory() + " - " + getDirector() + " - " + getLength() + ": " + getCost() + " $");
+//    }
+
+    @Override
+    public void play() {
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
     }
 }
