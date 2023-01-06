@@ -33,21 +33,6 @@ public class Cart {
         }
     }
 
-    public void addMedia(Media[] mediaList) throws LimitExceededException {
-        if (itemsOrdered.size() + mediaList.length >= MAX_NUMBERS_ORDERED) {
-            System.out.println("Not enough space to add!");
-            throw new LimitExceededException("ERROR: The number of media has reached its limit!");
-        } else {
-            for (Media m : mediaList) {
-                try {
-                    this.addMedia(m);
-                } catch (LimitExceededException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-            System.out.println("Successfully add!");
-        }
-    }
 
     public void addMedia(Media dvd1, Media dvd2) throws LimitExceededException {
         if (itemsOrdered.size() + 2 >= MAX_NUMBERS_ORDERED) {

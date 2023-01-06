@@ -38,15 +38,6 @@ public class DigitalVideoDisc extends Disc implements Playable {
         setCost(cost);
     }
 
-    public DigitalVideoDisc(String title, String category, String director, float cost) {
-        ++nbDigitalVideoDiscs;
-        setId((int) (Math.random() * 10000));
-        setTitle(title);
-        setCategory(category);
-        setDirector(director);
-        setCost(cost);
-    }
-
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
         ++nbDigitalVideoDiscs;
         setId((int) (Math.random() * 10000));
