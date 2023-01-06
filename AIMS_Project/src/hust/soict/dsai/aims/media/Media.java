@@ -2,9 +2,7 @@ package hust.soict.dsai.aims.media;
 
 import hust.soict.dsai.aims.disc.CompactDisc;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
-import hust.soict.dsai.aims.disc.Track;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -24,7 +22,11 @@ public abstract class Media {
         this.category = category;
         this.cost = cost;
     }
-
+    public Media(String title, String category, float cost) {
+        this.title = title;
+        this.category = category;
+        this.cost = cost;
+    }
     public int getId() {
         return id;
     }
@@ -60,13 +62,34 @@ public abstract class Media {
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 
+    public String toString() {
+        return "Media: " +
+                "id - " + this.getId() + " | " +
+                "title - " + this.getTitle() + " | " +
+                "category - " + this.getCategory() + " | " +
+                "cost - " + this.getCost() + " | " +
+                ".";
+    }
+    public boolean isMatch(String title) {
+        return this.title.toLowerCase().contains(title.toLowerCase());
+    }
+
+    public boolean isMatch(int id) {
+        return (this.id == id);
+    }
     @Override
-    public boolean equals(Object obj) {
-        if(obj instanceof Media a){
-            return this.title.equals(a.title);
+    public boolean equals(Object o) {
+        if (o instanceof Media) {
+            try {
+                String title = ((Media) o).getTitle();
+                if (this.isMatch(title)) return true;
+            } catch (NullPointerException | ClassCastException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }
+
     public static void main(String[] args) {
         List<Media> media = new ArrayList<Media>();
         CompactDisc cd = new CompactDisc(10, "abc", 100, "STM", "POP", (float) 10.2, "Ariana");

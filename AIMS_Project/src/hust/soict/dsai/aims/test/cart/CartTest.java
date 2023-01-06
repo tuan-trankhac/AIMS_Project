@@ -3,8 +3,10 @@ package hust.soict.dsai.aims.test.cart;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
+import javax.naming.LimitExceededException;
+
 public class CartTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LimitExceededException {
         // Create a new cart
         Cart cart = new Cart();
 
